@@ -37,8 +37,6 @@ let spamWords=prompt("Введите спам-слова").toLowerCase();
 function searchSpam(){
 let arrayText= text.split(' ');
 let arraySpam= spamWords.split(' ');
-console.log(arrayText);
-console.log(arraySpam);
 for (let i = 0; i < arrayText.length; i++) {
   for (let j = 0; j < arraySpam.length; j++){
     if (arrayText[i]==arraySpam[j]){
@@ -48,7 +46,7 @@ for (let i = 0; i < arrayText.length; i++) {
     }
   }
 }
-console.log(spamScale);
+return(spamScale);
 }
 searchSpam();
 // Напишите функцию, которая принимает на вход 3 аргумета (usersArr, from и to), где usersArr - массив пользователей, from - минимальный возраст и to - максимальный возраст (если to не задан, максимальный возраст не ограничен). Функция возвращает логины пользователей из массива usersArr, возраст которых находится в диапазоне [from; to)
@@ -81,12 +79,62 @@ let userArr=[
 ]
 let from= 18;
 let to=65;
+loginsArr=[];
 function ageCheck(userArr, from, to){
   for (let i=0; i<userArr.length; i++){
    if (userArr[i].age>=from && userArr[i].age<=to) {
-    console.log(userArr[i].login);
-   }
+    loginsArr.push(userArr[i].login);
+   };
   };
+return(loginsArr);
 };
 ageCheck(userArr, from, to);
 
+// 5.Напишите функцию, которая принимает на вход 2 обязательных аргумета (usersArr, favouriteLang), где usersArr - массив пользователей, favouriteLang - предпочитаемый язык программирования (агрумент передается строкой). Функция возвращает логины пользователей из массива usersArr, у которых в списке предпочитаемых языков есть favouriteLang
+ let usersArr = [
+     {
+         login: "qwe",
+         age: 34,
+         city: "Москва",
+         favouriteLangs: ["php", "js"]
+     },
+     {
+         login: "asd",
+         age: 23,
+         city: "Москва",
+         favouriteLangs: ["python", "javascript"]
+     },
+     {
+         login: "rty56",
+         age: 58,
+         city: "Тверь",
+         favouriteLangs: ["java", "c"]
+     },
+     {
+         login: "rty56",
+         age: 58,
+         city: "Тверь",
+         favouriteLangs: ["java", "scala"]
+     },
+     {
+         login: "ght",
+         age: 45,
+         city: "Владивосток",
+         favouriteLangs: ["php", "ruby"]
+     },
+ ];
+
+let favouriteLang=prompt('Введите любимый язык');
+function gotFavLang (usersArr, favouriteLang) {
+  let loginArr = [];
+  favouriteLang=favouriteLang.toLowerCase();
+    for (let i=0; i<usersArr.length; i++){
+       for (let j=0; j<usersArr[i].favouriteLangs.length; j++){
+        if (usersArr[i].favouriteLangs[j]==favouriteLang){
+            loginArr.push(usersArr[i].login);
+            }
+        }
+    };
+    return loginArr;
+};
+gotFavLang (usersArr, favouriteLang);
